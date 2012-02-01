@@ -1,1 +1,0 @@
-Carpeta de Trabajo HACKERHUB, donde se guardar los proyectos tanto en Python, Ruby, C++, C, JavaScript, Objetive-C, Arduino, tanto archivos de la Empresa.

@@ -1,5 +1,0 @@
-Consiste en crear un sistema que debe almacenar la información de la gente que esta en el hackerhub y proyectos que tiene, haciendo el típico ABCM (altas, bajas, consultas, modificaciones) usando la base de datos que gustes  y de lenguaje  Ruby, Python, IOS, Android o Titanium, puede ser para web, desktop o móvil.
-
-Nombre del Proyecto: ABCM
-Diseñado por: José García Vargas
-Fecha de Entrega: 10 de Febrero del 2012, a las 15:00
