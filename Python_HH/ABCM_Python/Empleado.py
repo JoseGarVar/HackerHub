@@ -35,5 +35,8 @@ class Empleado:
         print "Tecnologia:" , self.Tecnologia 
         print "Repositorio:" , self.Repositorio
         print "Sitio:" , self.Sitio
-        print "Contribudores:" , self.Contribudores        
+        print "Contribudores:" , self.Contribudores 
+ 
+ 
+ #Falta crear funciones alta, baja, etc       
         
