@@ -1,10 +1,11 @@
 class Empleado:
     #Abstraccion de los Objetos Empleado
-    def __init__(self,Nombre,Apellidos,Profesion,Telefono):
+    def __init__(self,Nombre,Apellidos,Profesion,Telefono,Numero):
         self.Nombre = Nombre
         self.Apellidos = Apellidos
         self.Profesion = Profesion
         self.Telefono = Telefono
+        self.Numero = Numero
         
     def Redes(self,Github,Twitter,Facebook):
         self.Github = Github
