@@ -12,7 +12,7 @@ class Empleado:
         return True
         
         
-    def Redes(self,Github = "",Twitter = "",Facebook = ""):
+    def Redes(self,Github = "NO",Twitter = "NO",Facebook = "NO"):
         self.Github = Github
         self.Twitter = Twitter
         self.Facebook = Facebook
@@ -52,3 +52,4 @@ class Empleado:
  
  #Falta crear funciones alta, baja, etc       
         
+#Guardar con una , y cuando se lea se divide
