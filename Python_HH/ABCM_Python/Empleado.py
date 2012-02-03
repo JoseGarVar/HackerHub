@@ -22,13 +22,13 @@ class Empleado:
         self.Facebook = Facebook
         return True
         
-    def Proyecto(self,NombreP = "",Tipo = "",Tecnologia = "",Repositorio = "",Sitio = "",Contribudores = ""):
+    def Proyecto(self,NombreP = "",Tipo = "",Tecnologia = "",Repositorio = "",Sitio = "",Contribuidores = ""):
         self.NombreP = NombreP
         self.Tipo = Tipo
         self.Tecnologia = Tecnologia
         self.Repositorio = Repositorio
         self.Sitio = Sitio
-        self.Contribudores = Contribudores
+        self.Contribuidores = Contribuidores
         return True
         
     def Imprimir_Personal(self):
@@ -48,19 +48,20 @@ class Empleado:
         print "Tecnologia:" , self.Tecnologia 
         print "Repositorio:" , self.Repositorio
         print "Sitio:" , self.Sitio
-        print "Contribudores:" , self.Contribudores 
+        print "Contribuidores:" , self.Contribuidores 
         
-    def Alta(self,Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook):
-        if self.Personal(Numero,Nombre,Apellidos,Profesion,Telefono) == True and self.Redes(Github,Twitter,Facebook) == True:
+    def Alta(self,Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores):
+        if self.Personal(Numero,Nombre,Apellidos,Profesion,Telefono) == True and self.Redes(Github,Twitter,Facebook) == True and self.Proyecto(NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores) == True:
             print "---------------------------------"
             print "Alta Satisfactoria\n"
             print "---------------------------------"
             self.Imprimir_Personal()
             self.Imprimir_Redes()
-            self.Agregar_Lista(Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook)
+            self.Imprimir_Proyecto()
+            self.Agregar_Lista(Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores)
             print Lista
             
-    def Agregar_Lista(self,Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook):
+    def Agregar_Lista(self,Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores):
         Lista.append(Numero)
         Lista.append(Nombre)
         Lista.append(Apellidos)
@@ -69,6 +70,12 @@ class Empleado:
         Lista.append(Github)
         Lista.append(Twitter)
         Lista.append(Facebook)
+        Lista.append(NombreP)
+        Lista.append(Tipo)
+        Lista.append(Tecnologia)
+        Lista.append(Repositorio)
+        Lista.append(Sitio)
+        Lista.append(Contribuidores)        
         
  
  
