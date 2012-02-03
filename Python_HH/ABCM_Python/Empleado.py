@@ -1,18 +1,23 @@
 class Empleado:
     #Abstraccion de los Objetos Empleado
-    def __init__(self,Nombre,Apellidos,Profesion,Telefono,Numero):
+    def __init__(self):
+        print "Accediendo A la Base de Datos"
+        
+    def Personal(self,Numero,Nombre,Apellidos,Profesion,Telefono):
+        self.Numero = Numero
         self.Nombre = Nombre
         self.Apellidos = Apellidos
         self.Profesion = Profesion
         self.Telefono = Telefono
-        self.Numero = Numero
+        return True
         
-    def Redes(self,Github,Twitter,Facebook):
+        
+    def Redes(self,Github = "",Twitter = "",Facebook = ""):
         self.Github = Github
         self.Twitter = Twitter
         self.Facebook = Facebook
         
-    def Proyecto(self,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribudores):
+    def Proyecto(self,NombreP = "",Tipo = "",Tecnologia = "",Repositorio = "",Sitio = "",Contribudores = ""):
         self.NombreP = NombreP
         self.Tipo = Tipo
         self.Tecnologia = Tecnologia
@@ -21,6 +26,7 @@ class Empleado:
         self.Contribudores = Contribudores
         
     def Imprimir_Personal(self):
+        print "Numero de Empleado" , self.Numero
         print "Nombre:" , self.Nombre , self.Apellidos
         print "Profesion/Ocupacion:" , self.Profesion
         print "Telefono:" ,int(self.Telefono)
@@ -38,8 +44,10 @@ class Empleado:
         print "Sitio:" , self.Sitio
         print "Contribudores:" , self.Contribudores 
         
-    def Alta(self):
-        
+    def Alta(self,Numero,Nombre,Apellidos,Profesion,Telefono):
+        if self.Personal(Numero,Nombre,Apellidos,Profesion,Telefono) == True:
+            print "Dado de Alta..."
+        self.Imprimir_Personal()
  
  
  #Falta crear funciones alta, baja, etc       
