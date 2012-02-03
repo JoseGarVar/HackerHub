@@ -37,6 +37,9 @@ class Empleado:
         print "Repositorio:" , self.Repositorio
         print "Sitio:" , self.Sitio
         print "Contribudores:" , self.Contribudores 
+        
+    def Alta(self):
+        
  
  
  #Falta crear funciones alta, baja, etc       
