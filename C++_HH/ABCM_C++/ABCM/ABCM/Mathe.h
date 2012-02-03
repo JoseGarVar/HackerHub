@@ -9,6 +9,6 @@
 #ifndef ABCM_Mathe_h
 #define ABCM_Mathe_h
 
-
+int Suma(int,int);
 
 #endif

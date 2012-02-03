@@ -1,5 +1,8 @@
 import Empleado
 
+MAX_EMP = 100
+Numero = 1
+Emp = Empleado.Empleado()
 op = 1
 
 while(op <> 5):
@@ -16,14 +19,14 @@ while(op <> 5):
 
     #Opcion = { 1 : "Alta de Empleado" , 2 : "Baja de Empleado" , 3 : "Consulta de Empleado" , 4 : "Modificar Empleado"}
 
-    MAX_EMP = 100
-    Numero = 1
-    Emp = Empleado.Empleado()
+    
     #Emp.Imprimir_Personal()
     #a = Empleado.Empleado("Jose","Garcia Vargas","Ingeniero Mecatronica","4621104829","001")
     #a.Imprimir_Personal()
     #print Opcion[op]
 
+
+#Altas
     if op == 1:    
         Numero = raw_input("Ingrese el Numero del Trabajador: ")
         Nombre = raw_input("Ingrese el Nombre del Trabajador: ")
