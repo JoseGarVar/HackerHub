@@ -1,5 +1,7 @@
 Lista = []
 
+
+#clear_output()
 class Empleado:
     #Abstraccion de los Objetos Empleado
     
