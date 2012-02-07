@@ -41,7 +41,7 @@ def Consulta_Empleado(Emp,and_,User):
     
     Max = MAX_EMP(User)    
                     
-    NE = int(raw_input("Ingrese el Numero de Empleado: "))
+    NE = int(raw_input("\nIngrese el Numero de Empleado: "))
     #seleccionando el Ususario
     while NE < 0 or NE > Max:
         print "Usuario no Encontrado verifique el Numero de Empleado"
@@ -98,6 +98,7 @@ def MAX_EMP(User):
 
 def IMPRIMIR(Emp_Select):
     for row in Emp_Select:
+            print "\nNumero de Empleado:",row['id']
             print "Nombre del Trabajador:" ,row['Nombre'], row['Apellidos']
             print "Profesion/Ocupacion:" ,row['Profesion']
             print "Telefono:" ,row['Telefono']
