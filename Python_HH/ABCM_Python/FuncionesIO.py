@@ -119,7 +119,7 @@ def Baja_Empleado(Emp,delete,and_,User):
         elif Seg == "SI":
             delete = User.delete(and_(User.c.id == NE)) 
             delete.execute()            
-            print "\nREGISTRO SE BORRADO"
+            print "\nREGISTRO BORRADO"
             Mal = 0
     
     
@@ -140,7 +140,18 @@ def Consulta_Empleado(Emp,and_,User):
     IMPRIMIR(Emp_Select)
     
         
-
+def Modificacion_Empleado(Emp,and_,User):
+    Max = MAX_EMP(User)    
+                        
+    NE = int(raw_input("Ingrese el Numero de Empleado: "))
+    #seleccionando el Ususario
+    while NE < 0 or NE > Max:
+        print "Usuario no Encontrado verifique el Numero de Empleado"
+        NE = int(raw_input("Ingrese el Numero de Empleado: "))
+            
+    select = User.select(and_(User.c.id == NE)) 
+    Emp_Select = select.execute()
+    IMPRIMIR(Emp_Select)    
 
 
 
@@ -155,11 +166,11 @@ def MAX_EMP(User):
 def IMPRIMIR(Emp_Select):
     for row in Emp_Select:
             print "Nombre del Trabajador:" ,row['Nombre'], row['Apellidos']
-            print "Profesion:" ,row['Profesion']
+            print "Profesion/Ocupacion:" ,row['Profesion']
             print "Telefono:" ,row['Telefono']
             print "Github:" ,row['Github']
             print "Twitter:" ,row['Twitter']
-            print "Facebook del Trabajador:" ,row['Facebook']
+            print "Facebook:" ,row['Facebook']
             print "Nombre del Proyecto:" ,row['NombreP']
             print "Tipo:" ,row['Tipo']
             print "Tecnologia:" ,row['Tecnologia']

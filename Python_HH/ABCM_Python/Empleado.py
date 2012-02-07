@@ -73,7 +73,7 @@ class Empleado:
                     print "Responda en Mayusculas SI o NO"
                     Mal == 1
                 elif Correcto == "SI":
-                    X= self.Agregar_Lista(Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores,insert)
+                    self.Agregar_Lista(Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores,insert)
                     print "---------------------------------"
                     print "Alta Satisfactoria\n"
                     print "---------------------------------"                    
