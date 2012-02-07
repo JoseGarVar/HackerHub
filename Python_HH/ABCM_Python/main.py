@@ -44,7 +44,7 @@ while(op > 5 or op < 1):
         raw_input( "\n\nPresione ENTER para Continuar")
         op = 6
     elif op == 4:
-        Modificacion_Empleado(Emp,and_,User)
+        Modificacion_Empleado(Emp,and_,User,insert)
         raw_input( "\n\nPresione ENTER para Continuar")
         op = 6        
     elif op == 5:
