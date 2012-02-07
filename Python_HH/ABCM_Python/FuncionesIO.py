@@ -1,7 +1,5 @@
 
-def Alta_Empleado(Numero_Empleados,Emp):
-    Numero_Empleados += 1
-    Numero = Numero_Empleados 
+def Alta_Empleado(Emp,insert):
     Nombre = raw_input("Ingrese el Nombre del Trabajador: ")
     Apellidos = raw_input("Ingrese los Apellidos del Trabajador: ")
     Profesion = raw_input("Ingrese la Profesion del Trabajador: ")
@@ -91,8 +89,80 @@ def Alta_Empleado(Numero_Empleados,Emp):
                 Mal = 0      
           
                 
-        Emp.Alta(Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores)    
+        Emp.Alta(Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores,insert)    
+    
+
+def Baja_Empleado(Emp,delete,and_,User):
+    
+    Max = MAX_EMP(User)    
+                    
+    NE = int(raw_input("Ingrese el Numero de Empleado: "))
+    #seleccionando el Ususario
+    while NE < 0 or NE > Max:
+        print "Usuario no Encontrado verifique el Numero de Empleado"
+        NE = int(raw_input("Ingrese el Numero de Empleado: "))
         
+    select = User.select(and_(User.c.id == NE)) 
+    Emp_Select = select.execute()
+    IMPRIMIR(Emp_Select)
+    Mal = 1        
         
+    while Mal == 1:
+            
+        Seg = raw_input("\n\nEsta Seguro de Querer Borrar este Resgistro (Responda SI/NO):")        
+        if Seg == "NO":
+            print "\nNINGUN REGISTRO SE BORRO"
+            Mal = 0
+        elif Seg <> "NO" and not Seg == "SI" or Seg <> "SI":
+            print "Responda en Mayusculas SI o NO"
+            Mal == 1
+        elif Seg == "SI":
+            delete = User.delete(and_(User.c.id == NE)) 
+            delete.execute()            
+            print "\nREGISTRO SE BORRADO"
+            Mal = 0
+    
+    
+    
+
+def Consulta_Empleado(Emp,and_,User):
+    
+    Max = MAX_EMP(User)    
+                    
+    NE = int(raw_input("Ingrese el Numero de Empleado: "))
+    #seleccionando el Ususario
+    while NE < 0 or NE > Max:
+        print "Usuario no Encontrado verifique el Numero de Empleado"
+        NE = int(raw_input("Ingrese el Numero de Empleado: "))
         
-    return Numero_Empleados
+    select = User.select(and_(User.c.id == NE)) 
+    Emp_Select = select.execute()
+    IMPRIMIR(Emp_Select)
+    
+        
+
+
+
+
+def MAX_EMP(User):
+    select = User.select()
+    Emp_Select = select.execute()
+    for row in Emp_Select:
+        MAX = row['id']
+    print "**** Ingrese un Numero de Empleado MENOR a " + str(MAX) + " ****\n"
+    return MAX  
+
+def IMPRIMIR(Emp_Select):
+    for row in Emp_Select:
+            print "Nombre del Trabajador:" ,row['Nombre'], row['Apellidos']
+            print "Profesion:" ,row['Profesion']
+            print "Telefono:" ,row['Telefono']
+            print "Github:" ,row['Github']
+            print "Twitter:" ,row['Twitter']
+            print "Facebook del Trabajador:" ,row['Facebook']
+            print "Nombre del Proyecto:" ,row['NombreP']
+            print "Tipo:" ,row['Tipo']
+            print "Tecnologia:" ,row['Tecnologia']
+            print "Repositorio:" ,row['Repositorio']
+            print "Sitio:" ,row['Sitio']
+            print "Contribuidores:" ,row['Contribuidores']    

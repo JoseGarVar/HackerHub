@@ -1,6 +1,3 @@
-Lista = []
-
-
 #clear_output()
 class Empleado:
     #Abstraccion de los Objetos Empleado
@@ -9,8 +6,7 @@ class Empleado:
     def __init__(self):
         print "Accediendo A la Base de Datos"
         
-    def Personal(self,Numero,Nombre,Apellidos,Profesion,Telefono):
-        self.Numero = Numero
+    def Personal(self,Nombre,Apellidos,Profesion,Telefono):
         self.Nombre = Nombre
         self.Apellidos = Apellidos
         self.Profesion = Profesion
@@ -34,7 +30,6 @@ class Empleado:
         return True
         
     def Imprimir_Personal(self):
-        print "Numero de Empleado" , self.Numero
         print "Nombre:" , self.Nombre , self.Apellidos
         print "Profesion/Ocupacion:" , self.Profesion
         print "Telefono:" ,self.Telefono
@@ -52,33 +47,44 @@ class Empleado:
         print "Sitio:" , self.Sitio
         print "Contribuidores:" , self.Contribuidores 
         
-    def Alta(self,Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores):
-        if self.Personal(Numero,Nombre,Apellidos,Profesion,Telefono) == True and self.Redes(Github,Twitter,Facebook) == True and self.Proyecto(NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores) == True:
+    def Alta(self,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores,insert):
+        if self.Personal(Nombre,Apellidos,Profesion,Telefono) == True and self.Redes(Github,Twitter,Facebook) == True and self.Proyecto(NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores) == True:
             print "---------------------------------"
-            print "Alta Satisfactoria\n"
             print "---------------------------------"
+            print "---------------------------------"            
             self.Imprimir_Personal()
             self.Imprimir_Redes()
             self.Imprimir_Proyecto()
-            self.Agregar_Lista(Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores)
-            print Lista
-            
-    def Agregar_Lista(self,Numero,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores):
-        Lista.append(Numero)
-        Lista.append(Nombre)
-        Lista.append(Apellidos)
-        Lista.append(Profesion)
-        Lista.append(Telefono)
-        Lista.append(Github)
-        Lista.append(Twitter)
-        Lista.append(Facebook)
-        Lista.append(NombreP)
-        Lista.append(Tipo)
-        Lista.append(Tecnologia)
-        Lista.append(Repositorio)
-        Lista.append(Sitio)
-        Lista.append(Contribuidores)        
+            print "---------------------------------"
+            print "---------------------------------"
+            print "---------------------------------"          
         
+            
+            Mal = 1
+   
+        
+            while Mal == 1:
+                
+                Correcto = raw_input("\n\nPara Guardar, Verifique que esten bien los Datos...\n\nEstan bien los Datos? (Responda SI/NO):")        
+                if Correcto == "NO":
+                    print "Vuelva a dar de Alta un Nuevo Empleado"
+                    Mal = 2
+                elif Correcto <> "NO" and not Correcto == "SI" or Correcto <> "SI":
+                    print "Responda en Mayusculas SI o NO"
+                    Mal == 1
+                elif Correcto == "SI":
+                    X= self.Agregar_Lista(Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores,insert)
+                    print "---------------------------------"
+                    print "Alta Satisfactoria\n"
+                    print "---------------------------------"                    
+                    Mal = 0
+                    
+        
+            
+    def Agregar_Lista(self,Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores,insert):
+        insert.execute({'Nombre': Nombre, 'Apellidos': Apellidos, 'Profesion': Profesion,'Telefono': Telefono,'Github': Github,'Twitter': Twitter,'Facebook': Facebook,'NombreP': NombreP,'Tipo': Tipo,'Tecnologia': Tecnologia,'Repositorio': Repositorio,'Sitio': Sitio,'Contribuidores': Contribuidores})
+        
+
  
  
  #Falta crear funciones alta, baja, etc       
