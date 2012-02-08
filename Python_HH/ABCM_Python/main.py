@@ -24,7 +24,10 @@ while(op > 5 or op < 1):
     print "3.- Consulta de Empleado"
     print "4.- Modificar Empleado"
     print "5.- SALIR"
-    op = int(raw_input("Seleccione una Opcion: "))
+    try:
+        op = int(raw_input("Seleccione una Opcion: "))
+    except ValueError:
+        op = 6        
     print "---------------------------------"
 
 

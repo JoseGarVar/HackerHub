@@ -6,17 +6,17 @@ def Alta_Empleado(Emp,insert):
 
 def Baja_Empleado(Emp,delete,and_,User):
     
-    Max = MAX_EMP(User)    
+    Max = Max_Emp(User)    
                     
-    NE = int(raw_input("Ingrese el Numero de Empleado: "))
+    NE = Verificar_Numero()                
     #seleccionando el Ususario
     while NE < 0 or NE > Max:
         print "Usuario no Encontrado verifique el Numero de Empleado"
-        NE = int(raw_input("Ingrese el Numero de Empleado: "))
+        NE = Verificar_Numero()
         
     select = User.select(and_(User.c.id == NE)) 
     Emp_Select = select.execute()
-    IMPRIMIR(Emp_Select)
+    Imprimir(Emp_Select)
     Mal = 1        
         
     while Mal == 1:
@@ -39,38 +39,31 @@ def Baja_Empleado(Emp,delete,and_,User):
 
 def Consulta_Empleado(Emp,and_,User):
     
-    Max = MAX_EMP(User)    
-    try:       
-            NE = int(raw_input("\nIngrese el Numero de Empleado: "))
-    except ValueError:
-            NE = -1
-                    
+    Max = Max_Emp(User)    
+    NE = Verificar_Numero()                
     #seleccionando el Ususario
     while NE < 0 or NE > Max:
         print "Usuario no Encontrado verifique el Numero de Empleado"
-        try:       
-            NE = int(raw_input("\nIngrese el Numero de Empleado: "))
-        except ValueError:
-            NE = -1
+        NE = Verificar_Numero()
         
     select = User.select(and_(User.c.id == NE)) 
     Emp_Select = select.execute()
-    IMPRIMIR(Emp_Select)
+    Imprimir(Emp_Select)
     
         
 def Modificacion_Empleado(Emp,and_,User,insert):
-    Max = MAX_EMP(User)    
+    Max = Max_Emp(User)    
                         
-    NE = int(raw_input("Ingrese el Numero de Empleado: "))
+    NE = Verificar_Numero()                
     #seleccionando el Ususario
     while NE < 0 or NE > Max:
         print "Usuario no Encontrado verifique el Numero de Empleado"
-        NE = int(raw_input("Ingrese el Numero de Empleado: "))
+        NE = Verificar_Numero()
             
     select = User.select(and_(User.c.id == NE)) 
     Emp_Select = select.execute()
     print "\nUsuario a Modificar\n"
-    IMPRIMIR(Emp_Select)    
+    Imprimir(Emp_Select)    
     
     print "\n\nIngrese TODOS los Datos Nuevamente)\n"
     Ingresar_Datos()
@@ -94,7 +87,7 @@ def Modificacion_Empleado(Emp,and_,User,insert):
                     print "\nREGISTRO MODIFICADO"
                     Mal = 0
 
-def MAX_EMP(User):
+def Max_Emp(User):
     select = User.select()
     Emp_Select = select.execute()
     for row in Emp_Select:
@@ -102,7 +95,7 @@ def MAX_EMP(User):
     print "**** Ingrese un Numero de Empleado MENOR a " + str(MAX) + " ****\n"
     return MAX  
 
-def IMPRIMIR(Emp_Select):
+def Imprimir(Emp_Select):
     for row in Emp_Select:
             print "\nNumero de Empleado:",row['id']
             print "Nombre del Trabajador:" ,row['Nombre'], row['Apellidos']
@@ -207,4 +200,16 @@ def Ingresar_Datos():
                         if Contribuidores == "":
                                 Contribuidores = "NO"  
                     
-                        Mal = 0          
+                        Mal = 0
+              
+              
+                        
+def Verificar_Numero():
+        try:       
+                NE = int(raw_input("\nIngrese el Numero de Empleado: "))
+        except ValueError:
+                NE = -1        
+        
+        return NE
+        
+        
