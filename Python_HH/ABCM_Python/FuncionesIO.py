@@ -40,12 +40,18 @@ def Baja_Empleado(Emp,delete,and_,User):
 def Consulta_Empleado(Emp,and_,User):
     
     Max = MAX_EMP(User)    
+    try:       
+            NE = int(raw_input("\nIngrese el Numero de Empleado: "))
+    except ValueError:
+            NE = -1
                     
-    NE = int(raw_input("\nIngrese el Numero de Empleado: "))
     #seleccionando el Ususario
     while NE < 0 or NE > Max:
         print "Usuario no Encontrado verifique el Numero de Empleado"
-        NE = int(raw_input("Ingrese el Numero de Empleado: "))
+        try:       
+            NE = int(raw_input("\nIngrese el Numero de Empleado: "))
+        except ValueError:
+            NE = -1
         
     select = User.select(and_(User.c.id == NE)) 
     Emp_Select = select.execute()
