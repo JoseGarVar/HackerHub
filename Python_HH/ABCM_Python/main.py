@@ -1,6 +1,6 @@
 import Empleado
 import os
-from FuncionesIO import Alta_Empleado,Baja_Empleado,Consulta_Empleado,Modificacion_Empleado,Consulta_Empleado_General,Opciones_Profesiones,Opciones_Tecnologia,Opciones_Tipo,Opciones_Consultas
+from FuncionesIO import Alta_Empleado,Baja_Empleado,Consulta_Empleado,Modificacion_Empleado,Consulta_Empleado_General,Opciones_Profesiones,Opciones_Tecnologia,Opciones_Tipo,Opciones_Consultas,Consulta_Empleado_Profesion,Consulta_Empleado_Tecnologia,Consulta_Empleado_Tipo
 from db import create
 from sqlalchemy.sql import select
 
@@ -45,7 +45,19 @@ while(op > 5 or op < 1):
         op = 6
     elif op == 3:
         op3 = Opciones_Consultas()
-        Consulta_Empleado(Emp,and_,User)
+        if op3 == 1:
+            Consulta_Empleado_General(Emp,and_,User)
+        elif op3 == 2:
+            Consulta_Empleado(Emp,and_,User)
+        elif op3 == 3:
+            Prof = Opciones_Profesiones()
+            Consulta_Empleado_Profesion(Emp,and_,User,Prof)
+        elif op3 == 4:
+            Tec = Opciones_Tecnologia()
+            Consulta_Empleado_Tecnologia(Emp,and_,User,Tec)
+        elif op3 == 5:
+            Tip = Opciones_Tipo()
+            Consulta_Empleado_Tipo(Emp,and_,User,Tip)
         raw_input( "\n\nPresione ENTER para Continuar")
         op = 6
     elif op == 4:
@@ -57,7 +69,7 @@ while(op > 5 or op < 1):
         os.system('clear')
     
         
-Consulta_Empleado_General(Emp,and_,User)     
+   
      #Para volver a cargar el menu
         
     

@@ -55,15 +55,19 @@ def Consulta_Empleado_General(Emp,and_,User):
     Emp_Select = select.execute()
     Imprimir(Emp_Select)
     
-def Consulta_Empleado_Profesion(Emp,and_,User): 
-        
-    select = User.select(and_(User.c.Profesion == 'Ingeniero en Sistemas')) 
+def Consulta_Empleado_Profesion(Emp,and_,User,Prof): 
+    select = User.select(and_(User.c.Profesion == Prof)) 
+    Emp_Select = select.execute()
+    Imprimir(Emp_Select)  
+   
+def Consulta_Empleado_Tecnologia(Emp,and_,User,Tec): 
+    select = User.select(and_(User.c.Tecnologia == Tec)) 
     Emp_Select = select.execute()
     Imprimir(Emp_Select)   
  
  
-def Consulta_Empleado_Tipo(Emp,and_,User):  
-    select = User.select(and_(User.c.Profesion == 'Ingeniero en Sistemas')) 
+def Consulta_Empleado_Tipo(Emp,and_,User,Tip):  
+    select = User.select(and_(User.c.Tipo == Tip)) 
     Emp_Select = select.execute()
     Imprimir(Emp_Select) 
 
@@ -303,6 +307,7 @@ def Opciones_Tecnologia():
         print "8.- C++"
         print "9.- Objetive-C"
         print "10.- Android"
+        print "11.- Python"
         
 
         try:
@@ -310,7 +315,7 @@ def Opciones_Tecnologia():
         except ValueError:
                 op2 = -1               
         #seleccionando el Ususario
-        while op2 < 0 or op2 > 10:
+        while op2 < 0 or op2 > 11:
                 try:
                         op2 = int(raw_input("Opcion Invalida, Vuelva a ingresar una Opcion: "))
                 except ValueError:
@@ -336,6 +341,8 @@ def Opciones_Tecnologia():
                 Tipo = "Objetive-C"
         if op2 == 10:
                 Tipo = "Android"
+        if op2 == 11:
+                Tipo = "Python"
                   
         return Tipo
 
