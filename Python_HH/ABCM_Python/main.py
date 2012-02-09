@@ -1,6 +1,6 @@
 import Empleado
 import os
-from FuncionesIO import Alta_Empleado,Baja_Empleado,Consulta_Empleado,Modificacion_Empleado,Consulta_Empleado_General
+from FuncionesIO import Alta_Empleado,Baja_Empleado,Consulta_Empleado,Modificacion_Empleado,Consulta_Empleado_General,Opciones_Profesiones,Opciones_Tecnologia,Opciones_Tipo,Opciones_Consultas
 from db import create
 from sqlalchemy.sql import select
 
@@ -8,6 +8,7 @@ from sqlalchemy.sql import select
 Emp = Empleado.Empleado()
 op = 6
 op2 = 6
+op3 = 6
 User = create.Users
 insert = User.insert()
 select = User.select()
@@ -43,6 +44,7 @@ while(op > 5 or op < 1):
         raw_input( "\n\nPresione ENTER para Continuar")
         op = 6
     elif op == 3:
+        op3 = Opciones_Consultas()
         Consulta_Empleado(Emp,and_,User)
         raw_input( "\n\nPresione ENTER para Continuar")
         op = 6

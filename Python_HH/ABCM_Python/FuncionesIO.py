@@ -53,8 +53,21 @@ def Consulta_Empleado(Emp,and_,User):
 def Consulta_Empleado_General(Emp,and_,User):  
     select = User.select() 
     Emp_Select = select.execute()
-    Imprimir(Emp_Select)    
+    Imprimir(Emp_Select)
+    
+def Consulta_Empleado_Profesion(Emp,and_,User): 
         
+    select = User.select(and_(User.c.Profesion == 'Ingeniero en Sistemas')) 
+    Emp_Select = select.execute()
+    Imprimir(Emp_Select)   
+ 
+ 
+def Consulta_Empleado_Tipo(Emp,and_,User):  
+    select = User.select(and_(User.c.Profesion == 'Ingeniero en Sistemas')) 
+    Emp_Select = select.execute()
+    Imprimir(Emp_Select) 
+
+    
 def Modificacion_Empleado(Emp,and_,User,insert):
     Max = Max_Emp(User)    
                         
@@ -190,9 +203,7 @@ def Ingresar_Datos():
                 elif Proy == "SI":
                         NombreP = raw_input("Nombre del Proyecto: ")
                         Tipo = Opciones_Tipo()
-                        Tecnologia = raw_input("Tecnologia del Proyecto (Python, Andorid, C++, Etc): ")
-                        #Hacer las opciones para tecnologica y tipo,
-                        #consultas seran por numero, generar, por tipo y tecnologia
+                        Tecnologia = Opciones_Tecnologia()
                         Repositorio = raw_input("URL del Repositorio del Proyecto (Si NO Tiene Repositorio solo de Enter): ")
                         Sitio = raw_input("Sitio del Proyecto (Si NO Tiene Sitio solo de Enter): ")
                         Contribuidores = raw_input("Contribuidores del Proyecto (Si NO Tiene Contribuidores solo de Enter): ")
@@ -252,7 +263,7 @@ def Opciones_Profesiones():
 
 
 def Opciones_Tipo():
-        print "Selecione un Tipo de Proyecto\n"
+        print "\nSelecione un Tipo de Proyecto\n"
         print "1.- Web"
         print "2.- Desktop"
         print "3.- Mobile"
@@ -278,3 +289,74 @@ def Opciones_Tipo():
         if op2 == 4:
                 Tipo = "Console"       
         return Tipo
+
+
+def Opciones_Tecnologia():
+        print "\nSelecione la Tecnologia de Desarrollo del Proyecto\n"
+        print "1.- Ruby"
+        print "2.- JavaScript"
+        print "3.- Perl"
+        print "4.- Shell"
+        print "5.- PHP"
+        print "6.- C"
+        print "7.- Java"
+        print "8.- C++"
+        print "9.- Objetive-C"
+        print "10.- Android"
+        
+
+        try:
+                op2 = int(raw_input("Ingrese una Opcion: "))
+        except ValueError:
+                op2 = -1               
+        #seleccionando el Ususario
+        while op2 < 0 or op2 > 10:
+                try:
+                        op2 = int(raw_input("Opcion Invalida, Vuelva a ingresar una Opcion: "))
+                except ValueError:
+                        op2 = -1 
+                                
+        if op2 == 1:
+                Tipo = "Ruby"
+        if op2 == 2:
+                Tipo = "JavaScript"
+        if op2 == 3:
+                Tipo = "Perl" 
+        if op2 == 4:
+                Tipo = "Shell"  
+        if op2 == 5:
+                Tipo = "PHP"
+        if op2 == 6:
+                Tipo = "C"
+        if op2 == 7:
+                Tipo = "Java" 
+        if op2 == 8:
+                Tipo = "C++"  
+        if op2 == 9:
+                Tipo = "Objetive-C"
+        if op2 == 10:
+                Tipo = "Android"
+                  
+        return Tipo
+
+def Opciones_Consultas():
+        print "\nSelecione el Tipo Consulta\n"
+        print "1.- General"
+        print "2.- Numero de Empleado"
+        print "3.- Profesiones"
+        print "4.- Tecnologia"
+        print "5.- Tipo"
+        
+
+        try:
+                op2 = int(raw_input("Ingrese una Opcion: "))
+        except ValueError:
+                op2 = -1               
+        #seleccionando el Ususario
+        while op2 < 0 or op2 > 5:
+                try:
+                        op2 = int(raw_input("Opcion Invalida, Vuelva a ingresar una Opcion: "))
+                except ValueError:
+                        op2 = -1 
+                                     
+        return op2
