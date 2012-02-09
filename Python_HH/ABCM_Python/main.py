@@ -1,13 +1,13 @@
 import Empleado
 import os
-from FuncionesIO import Alta_Empleado,Baja_Empleado,Consulta_Empleado,Modificacion_Empleado
+from FuncionesIO import Alta_Empleado,Baja_Empleado,Consulta_Empleado,Modificacion_Empleado,Consulta_Empleado_General
 from db import create
 from sqlalchemy.sql import select
 
 
-MAX_EMP = 100
 Emp = Empleado.Empleado()
 op = 6
+op2 = 6
 User = create.Users
 insert = User.insert()
 select = User.select()
@@ -55,7 +55,7 @@ while(op > 5 or op < 1):
         os.system('clear')
     
         
-        
+Consulta_Empleado_General(Emp,and_,User)     
      #Para volver a cargar el menu
         
     

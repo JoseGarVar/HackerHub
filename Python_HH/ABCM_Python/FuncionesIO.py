@@ -49,7 +49,11 @@ def Consulta_Empleado(Emp,and_,User):
     select = User.select(and_(User.c.id == NE)) 
     Emp_Select = select.execute()
     Imprimir(Emp_Select)
-    
+   
+def Consulta_Empleado_General(Emp,and_,User):  
+    select = User.select() 
+    Emp_Select = select.execute()
+    Imprimir(Emp_Select)    
         
 def Modificacion_Empleado(Emp,and_,User,insert):
     Max = Max_Emp(User)    
@@ -116,7 +120,7 @@ def Ingresar_Datos():
         global Nombre,Apellidos,Profesion,Telefono,Github,Twitter,Facebook,NombreP,Tipo,Tecnologia,Repositorio,Sitio,Contribuidores
         Nombre = raw_input("Ingrese el Nombre del Trabajador: ")
         Apellidos = raw_input("Ingrese los Apellidos del Trabajador: ")
-        Profesion = raw_input("Ingrese la Profesion del Trabajador: ")
+        Profesion = Opciones_Profesiones()
         Telefono = raw_input("Ingrese el Telefono del Trabajador: ")
     
         Mal = 1
@@ -133,7 +137,7 @@ def Ingresar_Datos():
                         print "Responda en Mayusculas SI o NO"
                         Mal == 1
                 elif Red == "SI":
-                        Github = raw_input("\nDigite su cuenta GitHub: ")
+                        Github = "https://github.com/" + raw_input("\nDigite su Nombre de Usuario GitHub: ")
                         Mal = 0
                         
         Mal = 1        
@@ -148,7 +152,7 @@ def Ingresar_Datos():
                         print "Responda en Mayusculas SI o NO"
                         Mal == 1
                 elif Red == "SI":
-                        Twitter = raw_input("\nDigite su cuenta Twitter: ")
+                        Twitter = "https://twitter.com/#!/" + raw_input("\nDigite su Nombre de Usuario Twitter: ")
                         Mal = 0
     
         Mal = 1
@@ -163,7 +167,7 @@ def Ingresar_Datos():
                         print "Responda en Mayusculas SI o NO"
                         Mal == 1
                 elif Red == "SI":
-                        Facebook = raw_input("\nDigite su cuenta Facebook: ")
+                        Facebook = "http://www.facebook.com/" +  raw_input("\nDigite su Nombre de Usuario Facebook: ")
                         Mal = 0                
             
         #Preguntando por Proyectos Personales
@@ -185,9 +189,11 @@ def Ingresar_Datos():
                         Mal == 1
                 elif Proy == "SI":
                         NombreP = raw_input("Nombre del Proyecto: ")
-                        Tipo = raw_input("Tipo de Proyecto (Web, Desktop, Movil): ")
+                        Tipo = Opciones_Tipo()
                         Tecnologia = raw_input("Tecnologia del Proyecto (Python, Andorid, C++, Etc): ")
-                        Repositorio = raw_input("Repositorio del Proyecto (Si NO Tiene Repositorio solo de Enter): ")
+                        #Hacer las opciones para tecnologica y tipo,
+                        #consultas seran por numero, generar, por tipo y tecnologia
+                        Repositorio = raw_input("URL del Repositorio del Proyecto (Si NO Tiene Repositorio solo de Enter): ")
                         Sitio = raw_input("Sitio del Proyecto (Si NO Tiene Sitio solo de Enter): ")
                         Contribuidores = raw_input("Contribuidores del Proyecto (Si NO Tiene Contribuidores solo de Enter): ")
                 
@@ -212,4 +218,63 @@ def Verificar_Numero():
         
         return NE
         
-        
+
+def Opciones_Profesiones():
+        print "Selecione una Profesion\n"
+        print "1.- Ingeniero en Sistemas"
+        print "2.- Ingeniero en Mecatronica"
+        print "3.- Licenciado en Administracion"
+        print "4.- Licenciado en Comunicacion"
+        print "5.- Disenador Web"
+
+        try:
+                op2 = int(raw_input("Ingrese una Opcion: "))
+        except ValueError:
+                op2 = -1               
+        #seleccionando el Ususario
+        while op2 < 0 or op2 > 5:
+                try:
+                        op2 = int(raw_input("Opcion Invalida, Vuelva a ingresar una Opcion: "))
+                except ValueError:
+                        op2 = -1 
+                                
+        if op2 == 1:
+                Profesion = "Ingeniero en Sistemas"
+        if op2 == 2:
+                Profesion = "Ingeniero en Mecatronica"
+        if op2 == 3:
+                Profesion = "Licenciado en Administracion"
+        if op2 == 4:
+                Profesion = "Licenciado en Comunicacion"  
+        if op2 == 5:
+                Profesion = "Disenador Web"       
+        return Profesion
+
+
+def Opciones_Tipo():
+        print "Selecione un Tipo de Proyecto\n"
+        print "1.- Web"
+        print "2.- Desktop"
+        print "3.- Mobile"
+        print "4.- Console"
+
+        try:
+                op2 = int(raw_input("Ingrese una Opcion: "))
+        except ValueError:
+                op2 = -1               
+        #seleccionando el Ususario
+        while op2 < 0 or op2 > 4:
+                try:
+                        op2 = int(raw_input("Opcion Invalida, Vuelva a ingresar una Opcion: "))
+                except ValueError:
+                        op2 = -1 
+                                
+        if op2 == 1:
+                Tipo = "Web"
+        if op2 == 2:
+                Tipo = "Desktop"
+        if op2 == 3:
+                Tipo = "Mobile" 
+        if op2 == 4:
+                Tipo = "Console"       
+        return Tipo
