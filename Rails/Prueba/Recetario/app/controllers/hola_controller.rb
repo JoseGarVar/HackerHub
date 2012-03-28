@@ -1,0 +1,2 @@
+class HolaController < ApplicationController
+end
